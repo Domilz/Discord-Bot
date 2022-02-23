@@ -5,7 +5,8 @@ const { Client, Intents, Collection } = require("discord.js");
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_MEMBERS,
     ]
 });
 
@@ -30,6 +31,9 @@ for (const file of eventFiles) {
 
     if (event.once) {
         client.once(event.name, (...args) => event.execute(...args, commands));
+    }
+    else {
+        client.on(event.name, (...args) => event.execute(...args, commands));
     }
 }
 
