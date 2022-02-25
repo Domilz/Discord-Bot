@@ -22,6 +22,7 @@ for (const file of commandFiles) {
     client.commands.set(command.data.name, command);
 }
 
+
 const eventFiles = fs
     .readdirSync("./events")
     .filter(file => file.endsWith(".js")); 
